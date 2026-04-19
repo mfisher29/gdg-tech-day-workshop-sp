@@ -1,0 +1,15 @@
+Gostaria de criar um site informativo para uma conferência técnica de um dia.
+
+O site deve ter as seguintes funcionalidades:
+
+1. Uma página inicial que mostre a data, o local, a programação e o horário atuais.
+2. O evento de um dia deve ser listado com um total de 8 palestras.
+3. Cada palestra deve ter no máximo 1 ou 2 palestrantes.
+4. Cada palestra deve ter um ID, título, palestrantes, categoria (1 ou 2), descrição e horário.
+5. Cada palestrante deve ter nome, sobrenome e URL do LinkedIn.
+6. Permitir que os usuários pesquisem por categoria, palestrante e título.
+7. Incluir um intervalo para almoço de 60 minutos.
+8. Usar dados fictícios para eventos e palestrantes, criar uma programação e definir que o evento seja sobre tecnologias do Google Cloud.
+9. Tecnologías utilizadas: Python e o framework Flask no servidor. O front-end deve ser em HTML, CSS e JavaScript básicos. 
+10. Teste o site por conta própria para verificar todas as funcionalidades e forneça um arquivo README detalhado sobre como configurar, executar e fazer quaisquer alterações adicionais.
+11. Inicie o aplicativo web para que eu possa analisá-lo.
