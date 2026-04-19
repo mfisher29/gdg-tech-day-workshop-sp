@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.name }} - Cronograma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blue"></div>
+        <div class="blob red"></div>
+        <div class="blob yellow"></div>
+        <div class="blob green"></div>
+    </div>
+
+    <header class="glass">
+        <div class="container">
+            <div class="header-content">
+                <div class="event-info">
+                    <h1 id="main-title">{{ event.name }}</h1>
+                    <p class="meta">
+                        <span class="date">📅 {{ event.date }}</span>
+                        <span class="location">📍 {{ event.location }}</span>
+                        <span class="time">⏰ Agora: {{ event.current_time }}</span>
+                    </p>
+                </div>
+                <button id="theme-toggle" class="glass" aria-label="Alternar modo claro/escuro">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section glass">
+            <input type="text" id="talk-search" placeholder="🔍 Buscar por categoria, palestrante ou título...">
+        </section>
+
+        <section id="schedule" class="schedule">
+            {% for talk in talks %}
+            <div class="talk-card glass {% if talk.is_break %}break-card{% endif %}" 
+                 data-category="{{ talk.category.lower() }}" 
+                 data-title="{{ talk.title.lower() }}" 
+                 data-speakers="{{ talk.speakers | map(attribute='first_name') | join(' ') | lower }} {{ talk.speakers | map(attribute='last_name') | join(' ') | lower }}">
+                <div class="talk-time">{{ talk.time }}</div>
+                <div class="talk-content">
+                    <span class="category-tag">{{ talk.category }}</span>
+                    <h2>{{ talk.title }}</h2>
+                    <p class="description">{{ talk.description }}</p>
+                    
+                    {% if talk.speakers %}
+                    <div class="speakers">
+                        {% for speaker in talk.speakers %}
+                        <a href="{{ speaker.linkedin }}" target="_blank" class="speaker-link" title="LinkedIn de {{ speaker.first_name }}">
+                            👤 {{ speaker.first_name }} {{ speaker.last_name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer class="glass">
+        <div class="container">
+            <p>&copy; 2026 Google Cloud Tech Day. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
