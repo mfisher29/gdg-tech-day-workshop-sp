@@ -43,7 +43,9 @@ Para colocar o site no ar, preparamos scripts automatizados para todos os sistem
 
 ### Windows
 1. Abra o **PowerShell** como Administrador.
-2. Execute `.\deploy.ps1`.
+2. (Opcional) Se receber um erro de permissão, execute: 
+   `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+3. Execute `.\deploy.ps1`.
 
 Siga as instruções no terminal (em Português!) para configurar o faturamento e finalizar a implantação.
 
