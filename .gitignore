@@ -14,3 +14,9 @@ Thumbs.db
 # Gemini/Antigravity
 .gemini/
 .antigravity/
+
+# Firebase
+.firebase/
+.firebaserc
+firebase.json
+
