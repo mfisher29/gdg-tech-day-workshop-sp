@@ -14,6 +14,9 @@ fi
 echo "👤 Autenticando no Google Cloud..."
 gcloud auth login
 
+# Limpa o .firebaserc para evitar erro de ID de projeto inválido antes do login
+echo "{}" > .firebaserc
+
 echo "🔥 Autenticando no Firebase..."
 if ! firebase login --list &> /dev/null; then
     firebase login
@@ -63,6 +66,7 @@ if ! firebase projects:list 2>/dev/null | grep -q "$PROJECT_ID"; then
 fi
 
 # Configura arquivos locais
+echo "📝 Gravando projeto '$PROJECT_ID' no .firebaserc..."
 echo "{\"projects\": {\"default\": \"$PROJECT_ID\"}}" > .firebaserc
 cat <<EOF > firebase.json
 {
